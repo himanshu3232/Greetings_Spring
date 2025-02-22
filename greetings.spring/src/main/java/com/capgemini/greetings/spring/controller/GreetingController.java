@@ -17,5 +17,13 @@ public class GreetingController {
         return new ResponseEntity<>(String.format("Hello, %s", name), HttpStatus.OK);
     }
 
-    @
+    @PutMapping
+    public ResponseEntity<String> putGreeting(@PathVariable("name") String name){
+        return new ResponseEntity<>(String.format("Hello, %s", name), HttpStatus.OK);
+    }
+
+    @DeleteMapping
+    public ResponseEntity<String> deleteGreeting(@PathVariable("name") String name){
+        return new ResponseEntity<>(String.format("Hello, %s", name), HttpStatus.OK);
+    }
 }
