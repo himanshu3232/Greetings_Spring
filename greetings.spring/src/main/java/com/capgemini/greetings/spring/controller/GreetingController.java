@@ -14,16 +14,16 @@ public class GreetingController {
 
     @PostMapping("/greeting/{name}")
     public ResponseEntity<String> postGreeting(@PathVariable("name") String name){
-        return new ResponseEntity<>(String.format("Hello, %s", name), HttpStatus.OK);
+        return new ResponseEntity<>(String.format("Create, %s", name), HttpStatus.OK);
     }
 
-    @PutMapping
+    @PutMapping("/greeting/put/{name}")
     public ResponseEntity<String> putGreeting(@PathVariable("name") String name){
-        return new ResponseEntity<>(String.format("Hello, %s", name), HttpStatus.OK);
+        return new ResponseEntity<>(String.format("Update, %s", name), HttpStatus.OK);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/greeting/delete/{name}")
     public ResponseEntity<String> deleteGreeting(@PathVariable("name") String name){
-        return new ResponseEntity<>(String.format("Hello, %s", name), HttpStatus.OK);
+        return new ResponseEntity<>(String.format("Delete, %s", name), HttpStatus.OK);
     }
 }
