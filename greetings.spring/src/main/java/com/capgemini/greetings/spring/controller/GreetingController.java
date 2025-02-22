@@ -27,6 +27,8 @@ public class GreetingController extends ServiceLayer {
     public ResponseEntity<String> deleteGreeting(@PathVariable("name") String name){
         return new ResponseEntity<>(String.format("Delete, %s", name), HttpStatus.OK);
     }
+
+    @GetMapping()
 }
 
 
