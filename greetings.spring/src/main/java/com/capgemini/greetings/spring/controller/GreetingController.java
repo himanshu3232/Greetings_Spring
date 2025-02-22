@@ -1,11 +1,12 @@
 package com.capgemini.greetings.spring.controller;
 
+import com.capgemini.greetings.spring.service.ServiceLayer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class GreetingController {
+public class GreetingController extends ServiceLayer {
 
     @GetMapping("/greeting")
     public ResponseEntity<String> getGreeting(@RequestParam(value="name", defaultValue = "World") String name){
