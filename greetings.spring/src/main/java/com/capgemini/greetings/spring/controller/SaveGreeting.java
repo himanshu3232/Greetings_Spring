@@ -35,4 +35,9 @@ public class SaveGreeting {
     public ResponseEntity<List<String>> getAllMessages(){
         return new ResponseEntity<>(greetingService.getAllMessages(), HttpStatus.OK);
     }
+
+    @PatchMapping("/greeting/patch/{id}")
+    public ResponseEntity<String> patchMessage(@PathVariable Long id, @RequestParam String message){
+        return new ResponseEntity<>(greetingService.patchMessage(id, message), HttpStatus.ACCEPTED);
+    }
 }

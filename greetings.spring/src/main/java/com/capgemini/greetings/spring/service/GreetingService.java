@@ -1,6 +1,7 @@
 package com.capgemini.greetings.spring.service;
 
 import com.capgemini.greetings.spring.entity.Greeting;
+import com.capgemini.greetings.spring.exception.InvalidIdException;
 import com.capgemini.greetings.spring.repository.GreetingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,12 @@ public class GreetingService {
     public List<String> getAllMessages(){
         List<Greeting> greetings = (List<Greeting>) greetingRepo.findAll();
         return mapToString(greetings);
+    }
+
+    public String patchMessage(Long id, String message){
+        Greeting greeting = greetingRepo.findById(id).orElseThrow();
+        greeting.setMessage(message);
+        return greetingRepo.save(greeting).getMessage();
     }
 
     private List<String> mapToString(List<Greeting> greetings){
