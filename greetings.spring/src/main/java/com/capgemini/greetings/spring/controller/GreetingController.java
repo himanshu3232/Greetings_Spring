@@ -28,7 +28,12 @@ public class GreetingController extends ServiceLayer {
         return new ResponseEntity<>(String.format("Delete, %s", name), HttpStatus.OK);
     }
 
-    @GetMapping()
+    @GetMapping("greeting")
+    public ResponseEntity<String> greetings
+            (@RequestParam(value = "firstName", defaultValue = "Hello") String firstName
+                    , @RequestParam(value = "lastName", defaultValue = "World") String lastName){
+        return new ResponseEntity<>(firstName + " " + lastName, HttpStatus.OK);
+    }
 }
 
 
