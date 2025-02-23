@@ -30,5 +30,4 @@ public class SaveGreeting {
     public ResponseEntity<String> postGreeting(Long id){
        return new ResponseEntity<>(greetingService.getMessage(id), HttpStatus.CREATED);
     }
-    
 }
