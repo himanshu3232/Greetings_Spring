@@ -41,6 +41,10 @@ public class GreetingService {
         return greetingRepo.save(greeting).getMessage();
     }
 
+    public void deleteMessage(Long id){
+        greetingRepo.deleteById(id);
+    }
+
     private List<String> mapToString(List<Greeting> greetings){
         List<String> messages = new ArrayList<>();
 

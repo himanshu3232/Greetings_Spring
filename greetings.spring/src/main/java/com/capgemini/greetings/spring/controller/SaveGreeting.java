@@ -20,6 +20,8 @@ public class SaveGreeting {
         this.greetingService = greetingService;
     }
 
+    private SaveGreeting(){}
+
     @PostMapping("/greeting/post")
     public ResponseEntity<Greeting> postGreeting(@RequestParam String message){
         Greeting greeting = greetingService.postMessage(new Greeting(message));
@@ -39,5 +41,10 @@ public class SaveGreeting {
     @PatchMapping("/greeting/patch/{id}")
     public ResponseEntity<String> patchMessage(@PathVariable Long id, @RequestParam String message){
         return new ResponseEntity<>(greetingService.patchMessage(id, message), HttpStatus.ACCEPTED);
+    }
+
+    @DeleteMapping("/greeting/delete/{id}")
+    public void deleteMessage(@PathVariable Long id){
+        greetingService.deleteMessage(id);
     }
 }
