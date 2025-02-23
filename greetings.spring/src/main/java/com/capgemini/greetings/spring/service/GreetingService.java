@@ -5,6 +5,9 @@ import com.capgemini.greetings.spring.repository.GreetingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class GreetingService {
     @Autowired
@@ -24,5 +27,19 @@ public class GreetingService {
 
     public Greeting postMessage(Greeting greeting){
         return greetingRepo.save(greeting);
+    }
+
+    public List<String> getAllMessages(){
+        List<Greeting> greetings = (List<Greeting>) greetingRepo.findAll();
+        return mapToString(greetings);
+    }
+
+    private List<String> mapToString(List<Greeting> greetings){
+        List<String> messages = new ArrayList<>();
+
+        for(Greeting greeting : greetings){
+            messages.add(greeting.getMessage());
+        }
+        return messages;
     }
 }

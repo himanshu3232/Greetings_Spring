@@ -33,6 +33,6 @@ public class SaveGreeting {
 
     @GetMapping("/greeting/get-all")
     public ResponseEntity<List<String>> getAllMessages(){
-        return new ResponseEntity<>(, HttpStatus.OK);
+        return new ResponseEntity<>(greetingService.getAllMessages(), HttpStatus.OK);
     }
 }
