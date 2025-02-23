@@ -5,9 +5,9 @@ import com.capgemini.greetings.spring.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class SaveGreeting {
@@ -20,14 +20,19 @@ public class SaveGreeting {
         this.greetingService = greetingService;
     }
 
-    @PostMapping
-    public ResponseEntity<Greeting> postGreeting(String message){
+    @PostMapping("/greeting/post")
+    public ResponseEntity<Greeting> postGreeting(@RequestParam String message){
         Greeting greeting = greetingService.postMessage(new Greeting(message));
         return new ResponseEntity<>(greeting, HttpStatus.CREATED);
     }
 
-    @GetMapping
-    public ResponseEntity<String> postGreeting(Long id){
+    @GetMapping("/greeting/get/{id}")
+    public ResponseEntity<String> postGreeting(@PathVariable Long id){
        return new ResponseEntity<>(greetingService.getMessage(id), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/greeting/get-all")
+    public ResponseEntity<List<String>> getAllMessages(){
+        return new ResponseEntity<>(, HttpStatus.OK);
     }
 }
