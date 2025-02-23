@@ -43,7 +43,7 @@ public class SaveGreeting {
         return new ResponseEntity<>(greetingService.patchMessage(id, message), HttpStatus.ACCEPTED);
     }
 
-    @DeleteMapping("/greeting/delete/{id}")
+    @DeleteMapping("/greeting/delete/v2/{id}")
     public void deleteMessage(@PathVariable Long id){
         greetingService.deleteMessage(id);
     }
